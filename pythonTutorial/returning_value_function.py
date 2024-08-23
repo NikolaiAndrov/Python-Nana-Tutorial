@@ -1,8 +1,12 @@
+print("Enter a number of days.")
 days_input = int(input())
 
 
 def calculate_days_to_hours(days_count):
-    return days_count * 24
+    if days_count > 0:
+        days_to_hours = days_count * 24
+        return f"{days_count} days are {days_to_hours} hours."
+    return "Invalid input!"
 
-calculated_days = calculate_days_to_hours(days_input)
-print(calculated_days)
+result = calculate_days_to_hours(days_input)
+print(result)
