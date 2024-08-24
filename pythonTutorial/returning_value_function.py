@@ -1,11 +1,9 @@
 def calculate_days_to_hours(days_count):
-
-    if not days_count.isdigit():
-        return "Invalid input!"
-
-    days = int(days_count)
-
-    if days <= 0:
+    try:
+        days = int(days_count)
+        if days <= 0:
+            return "You should enter a valid positive number!"
+    except ValueError:
         return "Invalid input!"
 
     days_to_hours = days * 24
