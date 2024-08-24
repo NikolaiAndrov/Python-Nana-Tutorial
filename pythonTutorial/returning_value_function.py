@@ -2,9 +2,9 @@ def calculate_days_to_hours(days_count):
     days_to_hours = days_count * 24
     return f"{days_count} days are {days_to_hours} hours."
 
-def validate_and_execute():
+def validate_and_execute(input_line):
     try:
-        days = int(user_input)
+        days = int(input_line)
         if days <= 0:
             print("You should enter a valid positive number!")
         else:
@@ -15,6 +15,7 @@ def validate_and_execute():
 
 while True:
     user_input = input("Enter a number of days.\n")
-    validate_and_execute()
-    if user_input.lower() == "end":
+    if user_input.lower() == "exit":
         break
+
+    validate_and_execute(user_input)
