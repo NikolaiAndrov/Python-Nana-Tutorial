@@ -1,15 +1,18 @@
-def calculate_days_to_hours(days_count):
-    try:
-        days = int(days_count)
-        if days <= 0:
-            return "You should enter a valid positive number!"
-    except ValueError:
-        return "Invalid input!"
-
-    days_to_hours = days * 24
-    return f"{days} days are {days_to_hours} hours."
-
-
 user_input = input("Enter a number of days.\n")
-result = calculate_days_to_hours(user_input)
-print(result)
+
+def calculate_days_to_hours(days_count):
+    days_to_hours = days_count * 24
+    return f"{days_count} days are {days_to_hours} hours."
+
+def validate_and_execute():
+    try:
+        days = int(user_input)
+        if days <= 0:
+            print("You should enter a valid positive number!")
+        else:
+            result = calculate_days_to_hours(days)
+            print(result)
+    except ValueError:
+        print("Invalid input!")
+
+validate_and_execute()
