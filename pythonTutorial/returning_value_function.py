@@ -18,5 +18,5 @@ while True:
     if user_input.lower() == "exit":
         break
 
-    for current_day in user_input.split():
+    for current_day in set(user_input.split()):
         validate_and_execute(current_day)
