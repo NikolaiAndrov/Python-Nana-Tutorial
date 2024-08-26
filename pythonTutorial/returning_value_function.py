@@ -1,22 +1,36 @@
-def calculate_days_to_hours(days_count):
-    days_to_hours = days_count * 24
-    return f"{days_count} days are {days_to_hours} hours."
+def calculate_days_to_unit(days_count, conversion_unit):
+    if conversion_unit.lower() == "hours":
+        return f"{days_count} days are {days_count * 24} {conversion_unit}."
+    elif conversion_unit.lower() == "minutes":
+        return f"{days_count} days are {days_count * 24 * 60} {conversion_unit}."
+    elif conversion_unit.lower() == "seconds":
+        return f"{days_count} days are {days_count * 24 * 60 * 60} {conversion_unit}."
+    else:
+        return "Unsupported conversion unit!"
 
-def validate_and_execute(days_count):
+
+def validate_and_execute(days_and_conversion_unit):
     try:
-        days = int(days_count)
+        days = int(days_and_conversion_unit["days"])
         if days <= 0:
             print("You should enter a valid positive number!")
         else:
-            result = calculate_days_to_hours(days)
+            unit = days_and_conversion_unit["unit"]
+            result = calculate_days_to_unit(days, unit)
             print(result)
     except ValueError:
         print("Invalid input!")
 
+
 while True:
-    user_input = input("Enter a number of days.\n")
+    user_input = input("Enter a number of days and conversion unit.\n")
     if user_input.lower() == "exit":
         break
 
-    for current_day in set(user_input.split()):
-        validate_and_execute(current_day)
+    try:
+        days_and_unit = user_input.split()
+        days_and_unit_dictionary = {"days": days_and_unit[0], "unit": days_and_unit[1]}
+        validate_and_execute(days_and_unit_dictionary)
+    except:
+        print("Invalid input")
+
