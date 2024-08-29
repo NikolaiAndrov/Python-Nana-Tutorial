@@ -10,3 +10,6 @@ class User:
 
     def change_job_title(self, new_job_title):
         self.current_job_title = new_job_title
+
+    def get_user_info(self):
+        print(f"User: {self.name}, job title: {self.current_job_title}, email: {self.email}.")
